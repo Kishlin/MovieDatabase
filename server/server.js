@@ -11,6 +11,7 @@ app.get('/popular', function(req, res){
     var page = (req.query["page"]) ? req.query["page"] : 1;
     page = (req.query["page"] > 1000) ? 1000 : req.query["page"];
     mdb.miscPopularMovies({page: page}, function(err, data){
+        console.log(err);
         data.total_pages = 1000;
         res.send(data)
     });
